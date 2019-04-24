@@ -32,7 +32,7 @@ namespace MsTest.Runner
                 }
               
             });
-
+            
             ProcessStartInfo processStartInfo = new ProcessStartInfo
             {
                 FileName = fileName,

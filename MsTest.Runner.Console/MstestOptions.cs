@@ -78,7 +78,7 @@ namespace MsTest.Runner
             }
              
             builder.Append($" /{nameof(TestContainer).ToLower()}:{Path.GetFileName(TestContainer)}");
-            builder.Append($@" /{nameof(ResultsFile).ToLower()}:{BuildWorkingDirectory}\{Path.GetFileName(TempResultsFile)}");
+            builder.Append($" /{nameof(ResultsFile).ToLower()}:{TempResultsFile}");
 
             if(!string.IsNullOrEmpty(TestMetadata))
                 builder.Append($" /{nameof(TestMetadata).ToLower()}:{TestMetadata}");
@@ -102,7 +102,7 @@ namespace MsTest.Runner
 
         public string TempResultsFile
         {
-            get { return Path.GetFileName(ResultsFile); }
+            get { return BuildWorkingDirectory+@"\"+Path.GetFileName(ResultsFile); }
         }
     }
 }
