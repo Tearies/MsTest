@@ -24,11 +24,13 @@ namespace MsTest.Runner
             var dirs = new List<string>(Directory.GetDirectories(mstestOptions.BuildWorkingDirectory));
             dirs.ForEach(p =>
             {
-                if (Path.GetDirectoryName(p).StartsWith("UITest"))
+                var dirName = new DirectoryInfo(p).Name;
+                if (dirName.StartsWith("UITest"))
                 {
                     Directory.Delete(p, true);
                     output($"Delete:{p}");
                 }
+              
             });
 
             ProcessStartInfo processStartInfo = new ProcessStartInfo

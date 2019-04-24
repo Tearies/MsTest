@@ -9,7 +9,8 @@ namespace MsTest.Runner
 {
     public class MstestOptions: IMsTest
     {
-        
+        private string _tempResultsFile;
+
 
         [Option("testcontainer", Required =true)]
         public string TestContainer { get; set; }
@@ -77,7 +78,7 @@ namespace MsTest.Runner
             }
              
             builder.Append($" /{nameof(TestContainer).ToLower()}:{Path.GetFileName(TestContainer)}");
-            builder.Append($" /{nameof(ResultsFile).ToLower()}:{Path.GetFileName(ResultsFile)}");
+            builder.Append($" /{nameof(ResultsFile).ToLower()}:{Path.GetFileName(TempResultsFile)}");
 
             if(!string.IsNullOrEmpty(TestMetadata))
                 builder.Append($" /{nameof(TestMetadata).ToLower()}:{TestMetadata}");
@@ -97,6 +98,11 @@ namespace MsTest.Runner
             
 
             return builder.ToString();
+        }
+
+        public string TempResultsFile
+        {
+            get { return Path.GetFileName(ResultsFile); }
         }
     }
 }

@@ -39,6 +39,7 @@ namespace MsTest.Runner
                     });
                 manualResetEvent.WaitOne();
                 Console.Out.WriteLine("MsTestEnd");
+                File.Copy(mstestOptions.TempResultsFile,mstestOptions.ResultsFile,true);
             }
             catch (Exception e)
             {
