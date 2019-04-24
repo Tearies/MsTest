@@ -28,11 +28,14 @@ namespace MsTest.Runner
                 if (dirName.StartsWith("UITest"))
                 {
                     Directory.Delete(p, true);
-                    output($"Delete:{p}");
                 }
               
             });
-            
+           
+            if (File.Exists(mstestOptions.TempResultsFile))
+            {
+                File.Delete(mstestOptions.TempResultsFile);
+            }
             ProcessStartInfo processStartInfo = new ProcessStartInfo
             {
                 FileName = fileName,

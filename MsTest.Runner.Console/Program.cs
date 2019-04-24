@@ -24,6 +24,7 @@ namespace MsTest.Runner
         {
             try
             {
+                Console.Out.WriteLine(mstestOptions.TempResultsFile + "||" + mstestOptions.ResultsFile);
                 ManualResetEvent manualResetEvent = new ManualResetEvent(false);
                 MsTestFactory<MstestOptions>.Default.Start(mstestOptions,
                     p =>
@@ -39,13 +40,13 @@ namespace MsTest.Runner
                     });
                 manualResetEvent.WaitOne();
                 Console.Out.WriteLine("MsTestEnd");
-                File.Copy(mstestOptions.TempResultsFile,mstestOptions.ResultsFile,true);
+                File.Copy(mstestOptions.TempResultsFile, mstestOptions.ResultsFile, true);
             }
             catch (Exception e)
             {
                 Console.Out.WriteLine(e.ToString());
             }
-           
+
         }
     }
 }

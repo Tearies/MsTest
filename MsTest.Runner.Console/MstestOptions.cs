@@ -33,7 +33,7 @@ namespace MsTest.Runner
         [Option("runconfig")]
         public string RunConfig { get; set; }
 
-        [Option("resultsfile",Required =true)]
+        [Option("resultsfile", Required =true)]
         public string ResultsFile { get; set; }
 
         [Option("nologo")]
@@ -41,7 +41,9 @@ namespace MsTest.Runner
 
         [Option("usestderr")]
         public bool UseStdErr { get; set; }
-
+        
+        [Option("test")]
+        public string Test { get; set; }
         [Usage(ApplicationAlias = "MsTest.Runner.Console")]
         public static IEnumerable<Example> Examples
         {
@@ -78,14 +80,13 @@ namespace MsTest.Runner
             }
              
             builder.Append($" /{nameof(TestContainer).ToLower()}:{Path.GetFileName(TestContainer)}");
-            builder.Append($" /{nameof(ResultsFile).ToLower()}:{TempResultsFile}");
+            builder.Append($" /{nameof(ResultsFile).ToLower()}:{Path.GetFileName(TempResultsFile)}");
 
             if(!string.IsNullOrEmpty(TestMetadata))
                 builder.Append($" /{nameof(TestMetadata).ToLower()}:{TestMetadata}");
 
             if (!string.IsNullOrEmpty(TestList))
                 builder.Append($" /{nameof(TestList).ToLower()}:{TestList}");
-
 
             if (!string.IsNullOrEmpty(Category))
                 builder.Append($" /{nameof(Category).ToLower()}:{Category}");
@@ -95,7 +96,9 @@ namespace MsTest.Runner
 
             if (!string.IsNullOrEmpty(RunConfig))
                 builder.Append($" /{nameof(RunConfig).ToLower()}:{RunConfig}");
-            
+
+            if (!string.IsNullOrEmpty(Test))
+                builder.Append($" /{nameof(Test).ToLower()}:{Test}");
 
             return builder.ToString();
         }

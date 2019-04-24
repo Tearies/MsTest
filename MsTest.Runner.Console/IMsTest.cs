@@ -5,5 +5,7 @@
         string BuildWorkingDirectory { get; }
 
         string BuildWorkingArgments { get; }
+
+        string TempResultsFile { get; }
     }
 }
