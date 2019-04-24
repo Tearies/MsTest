@@ -77,7 +77,7 @@ namespace MsTest.Runner
             }
              
             builder.Append($" /{nameof(TestContainer).ToLower()}:{Path.GetFileName(TestContainer)}");
-            builder.Append($" /{nameof(ResultsFile).ToLower()}:{ResultsFile}");
+            builder.Append($" /{nameof(ResultsFile).ToLower()}:{Path.GetFileName(ResultsFile)}");
 
             if(!string.IsNullOrEmpty(TestMetadata))
                 builder.Append($" /{nameof(TestMetadata).ToLower()}:{TestMetadata}");
