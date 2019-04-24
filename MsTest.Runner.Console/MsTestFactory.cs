@@ -45,7 +45,7 @@ namespace MsTest.Runner
                 RedirectStandardInput = true
             };
 
-            output($"{processStartInfo.FileName}||{mstestOptions.BuildWorkingArgments}||{mstestOptions.BuildWorkingDirectory}");
+            //WWoutput($"{processStartInfo.FileName}||{mstestOptions.BuildWorkingArgments}||{mstestOptions.BuildWorkingDirectory}");
             Process process = new Process { EnableRaisingEvents = true, StartInfo = processStartInfo };
             process.ErrorDataReceived += (s, e) => { error(e.Data); };
             process.OutputDataReceived += (s, e) => { output(e.Data); };
